@@ -1,0 +1,679 @@
+@import url("https://use.typekit.net/bqp8wjl.css");
+@import "reset";
+@import "breakpoint-sass";
+@import "breakpoint-slicer";
+$slicer-breakpoints: 0 400px 900px 1200px 1440px;
+body {
+  font-family: "myriad-pro", sans-serif;
+}
+
+// Hide what we don't want people to see
+.aural-only,
+.FormLabelText,
+#level_flexiblegift_type_Row,
+#level_flexibleduration_row,
+#responsive_payment_typecc_type_row,
+.payment-type-selection-container h3,
+#payment_cc_container h3,
+#responsive_payment_typecc_exp_date_row label {
+  display: none;
+}
+
+// Loader
+#finca-page-wrapper {
+  &::after {
+    height: 100vh;
+    opacity: 1;
+    position: absolute;
+    transition: opacity linear 0.1s;
+    content: "";
+    width: 100vw;
+    background: #fff;
+    z-index: 1;
+  }
+  &::before {
+    animation: 2s linear infinite spinner;
+    border: solid 3px #eee;
+    border-bottom-color: #ef6565;
+    border-radius: 50%;
+    content: "";
+    height: 40px;
+    left: 50%;
+    opacity: inherit;
+    position: absolute;
+    top: 50%;
+    transform: translate3d(-50%, -50%, 0);
+    transform-origin: center;
+    width: 40px;
+    will-change: transform;
+    z-index: 2;
+  }
+  &.loaded {
+    &::before,
+    &::after {
+      content: none;
+    }
+  }
+}
+
+#finca-page-wrapper {
+  display: flex;
+  align-items: stretch;
+  min-height: 100vh;
+  // Only layout container
+  > div {
+    &:first-child {
+      max-width: 600px;
+      flex: 0 1 auto;
+    }
+    &:last-child {
+      flex: auto;
+      background-image: url("https://apps.4sitestudios.com/fernando/finca/background.jpg");
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position: center top;
+      background-attachment: fixed;
+      position: relative;
+      &::before {
+        content: "";
+        width: 13px;
+        height: 100%;
+        position: absolute;
+        background-image: url("https://apps.4sitestudios.com/fernando/finca/lines.svg");
+        background-repeat: repeat-y;
+      }
+    }
+  }
+
+  .donation-form-container {
+    margin: 30px;
+    @include from(3) {
+      margin: 30px 65px;
+    }
+  }
+
+  #finca-logo img {
+    display: block;
+    margin-bottom: 45px;
+  }
+
+  #page-copy-wrapper {
+    h1 {
+      font-size: 26px;
+      font-weight: 700;
+      line-height: 1.05;
+      letter-spacing: -0.15px;
+      color: #333;
+      margin-bottom: 12px;
+      @include from(3) {
+        font-size: 38px;
+      }
+    }
+  }
+
+  #page-body-wrapper {
+    p {
+      font-size: 22px;
+      font-weight: 300;
+      line-height: 1.29;
+      color: #333333;
+      @include from(3) {
+        font-size: 24px;
+      }
+    }
+  }
+
+  .errorMessageContainer {
+    padding: 20px 10px;
+    background-color: #fce4e4;
+    border: 1px solid #fcc2c3;
+    margin-bottom: 50px;
+    color: #ed1849;
+    font-weight: bold;
+  }
+
+  // Content Styles
+
+  h2 {
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 1.67;
+    color: #333;
+    position: relative;
+    margin: 25px 0;
+    span {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 600;
+      line-height: 1;
+      letter-spacing: 2px;
+      color: #abb6ab;
+      @include from(3) {
+        position: absolute;
+        right: 0;
+        line-height: 30px;
+      }
+      &.flag {
+        color: #333;
+        padding-left: 30px;
+        line-height: 16px;
+        margin-top: 7px;
+        &.usa {
+          background-image: url("https://apps.4sitestudios.com/fernando/finca/usa.svg");
+          background-repeat: no-repeat;
+          background-size: contain;
+        }
+      }
+      &.padlock {
+        line-height: 14px;
+        background-image: url("https://apps.4sitestudios.com/fernando/finca/padlock.svg");
+        background-repeat: no-repeat;
+        background-size: contain;
+        padding-left: 17px;
+        margin-top: 7px;
+      }
+    }
+  }
+
+  // Form
+  form {
+    .form-donation-level {
+      .donation-level-container {
+        width: 100%;
+        @include from(3) {
+          width: 140px;
+          flex: 0 0 auto;
+          margin: 0 15px 15px 0;
+        }
+
+        &:last-child {
+          width: 100%;
+          max-width: 100%;
+          margin: 0;
+          margin-bottom: 45px;
+          .donation-level-input-container {
+            > label {
+              display: none;
+            }
+            // Other Amount
+            .donation-level-user-entered {
+              &::before {
+                content: "Other";
+                font-weight: 700;
+                font-size: 20px;
+                line-height: 28px;
+                height: 28px;
+                color: #333333;
+                position: absolute;
+                left: 35px;
+                top: 18px;
+                padding-right: 15px;
+                border-right: 1px solid #333;
+              }
+              label {
+                display: none;
+              }
+              input {
+                position: initial;
+                width: 100%;
+                border: 0;
+                font-size: 18px;
+                line-height: 1.33;
+                color: #333;
+                background: transparent;
+                padding-left: 12px;
+                padding-top: 0;
+                outline: none;
+                height: 62px;
+                font-family: myriad-pro, sans-serif;
+
+                box-sizing: border-box;
+                border: solid 1px rgba(171, 182, 171, 0.2);
+                background-color: #f1f1f1;
+                outline: none;
+                padding: 0 35px;
+                padding-left: 115px;
+                font-size: 18px;
+                line-height: 1.33;
+                letter-spacing: normal;
+                color: #333;
+                transition: border 0.3s, background-color 0.3s;
+                &::placeholder {
+                  color: rgba(#333, 0.5);
+                }
+                &:focus,
+                &.filled {
+                  border: solid 1px #00aeef;
+                  background: #fff;
+                  + label {
+                    font-size: 9px;
+                    top: 8px;
+                    text-transform: uppercase;
+                    font-weight: 600;
+                    opacity: 1;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    .radio-container,
+    .donation-levels,
+    .payment-type-selections {
+      @include from(3) {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        flex-flow: row wrap;
+      }
+
+      > div,
+      > span {
+        flex: auto;
+        max-width: 375px;
+        height: 65px;
+        text-align: center;
+        position: relative;
+        margin: 15px auto;
+        @include from(3) {
+          margin: 0;
+          max-width: 225px;
+        }
+        label {
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          font-size: 20px;
+          font-weight: 700;
+          line-height: 65px;
+          text-align: center;
+          color: #ffffff;
+          background-color: #333;
+          transition: background-color 0.3s ease-in-out;
+          cursor: pointer;
+          span {
+            font-size: 18px;
+            font-weight: 400;
+          }
+          &:hover {
+            background-color: #ed1849;
+          }
+        }
+        input[type="radio"] {
+          display: none;
+          &:checked {
+            + label {
+              background-color: #ed1849;
+            }
+          }
+        }
+      }
+      .selected label {
+        background-color: #ed1849;
+      }
+      &.frequency {
+        margin-top: 65px;
+        margin-bottom: 45px;
+      }
+      &.donation-levels {
+        justify-content: flex-start;
+      }
+    }
+    .form-row.form-text,
+    .form-row.form-selectlist {
+      position: relative;
+      height: 62px;
+      margin-bottom: 15px;
+      &#tribute_message_body_row {
+        height: 124px;
+        textarea {
+          padding-top: 25px !important;
+        }
+      }
+      .form-content {
+        &.filled {
+          label {
+            font-size: 9px;
+            top: 8px;
+            text-transform: uppercase;
+            font-weight: 600;
+            opacity: 1;
+          }
+          input,
+          textarea {
+            border: solid 1px #00aeef;
+            background: #fff;
+          }
+        }
+      }
+      label {
+        position: absolute;
+        top: 20px;
+        left: 15px;
+        font-size: 18px;
+        line-height: 1.33;
+        letter-spacing: normal;
+        color: #333;
+        opacity: 0.5;
+        transition: top 0.3s, color 0.3s, text-transform 0.3s, opacity 0.3s;
+        z-index: 1;
+      }
+      input,
+      textarea {
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        box-sizing: border-box;
+        border: solid 1px rgba(171, 182, 171, 0.2);
+        background-color: #f1f1f1;
+        outline: none;
+        padding-left: 15px;
+        padding-top: 16px;
+        font-size: 18px;
+        line-height: 1.33;
+        letter-spacing: normal;
+        color: #333;
+        transition: border 0.3s, background-color 0.3s;
+        &::placeholder {
+          color: rgba(#333, 0.5);
+        }
+      }
+      @include from(3) {
+        &#billing_addr_zip_row {
+          display: inline-block;
+          min-width: 140px;
+        }
+        &#billing_addr_country_row {
+          display: inline-block;
+          min-width: 305px;
+        }
+
+        &#billing_first_name_row,
+        &#billing_last_name_row,
+        &#billing_addr_city_row,
+        &#billing_addr_state_row {
+          display: inline-block;
+          min-width: 224px;
+        }
+        &#billing_last_name_row,
+        &#billing_addr_state_row,
+        &#billing_addr_country_row {
+          float: right;
+        }
+      }
+      &.form-error {
+        .ErrorMessage {
+          display: none;
+        }
+        input {
+          border-color: #ed1849;
+        }
+      }
+    }
+    .form-row.form-selectlist,
+    .cardExpGroup {
+      position: relative;
+      height: 62px;
+      label {
+        display: none;
+      }
+      select {
+        font-family: myriad-pro, sans-serif;
+        outline: none;
+        appearance: none;
+        background-image: url("data:image/svg+xml;utf8,<svg fill='black' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");
+        background-repeat: no-repeat;
+        background-position-x: 98%;
+        background-position-y: 50%;
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        box-sizing: border-box;
+        border: solid 1px rgba(171, 182, 171, 0.2);
+        background-color: #f1f1f1;
+        outline: none;
+        padding-left: 15px;
+        padding-top: 1px;
+        font-size: 18px;
+        line-height: 1.33;
+        letter-spacing: normal;
+        color: #333;
+        transition: border 0.3s, background-color 0.3s;
+        border-radius: 0;
+      }
+      &.form-error {
+        .ErrorMessage {
+          display: none;
+        }
+        select {
+          border-color: #ed1849;
+        }
+      }
+    }
+    .form-row.form-checkbox {
+      font-size: 14px;
+      font-weight: normal;
+      font-style: normal;
+      font-stretch: normal;
+      line-height: 1.29;
+      letter-spacing: normal;
+      color: #333333;
+      margin-bottom: 15px;
+
+      label {
+        display: block;
+        padding-left: 20px;
+        position: relative;
+        cursor: pointer;
+        &::before,
+        &::after {
+          position: absolute;
+          content: "";
+
+          /*Needed for the line-height to take effect*/
+          display: inline-block;
+        }
+        &::before {
+          height: 12px;
+          width: 12px;
+          border: 1px solid #333;
+          background: #333;
+          border-radius: 7px;
+          left: 0px;
+          top: 3px;
+        }
+        &::after {
+          height: 3px;
+          width: 7px;
+          border-left: 2px solid #fff;
+          border-bottom: 2px solid #fff;
+          transform: rotate(-45deg);
+          left: 3px;
+          top: 7px;
+        }
+      }
+      input {
+        display: none;
+        + label::after {
+          content: none;
+        }
+        &:checked {
+          + label::after {
+            content: "";
+          }
+        }
+      }
+    }
+    .payment-type-selection-container {
+      margin-bottom: 15px;
+      #responsive_payment_typepay_typeradio_payment_types {
+        .payment-type-label {
+          font-size: 20px;
+          font-weight: 700;
+          line-height: 65px;
+          text-align: center;
+          color: #ffffff;
+          transition: background-color 0.3s ease-in-out;
+          text-decoration: none;
+        }
+        .internal-payment {
+          .payment-type-label {
+            padding-left: 25px;
+            position: relative;
+            &::before {
+              content: "";
+              background-image: url('data:image/svg+xml;utf8,<svg version="1.1" xmlns="http://www.w3.org/2000/svg" width="17" height="13" viewBox="0 0 17 13"><path fill="white" fill-rule="nonzero" d="M15.319 0H1.396C.624 0 0 .624 0 1.393v10.214C0 12.377.624 13 1.396 13h13.923c.771 0 1.395-.624 1.395-1.393V1.393C16.714.623 16.09 0 15.32 0zM1.569 1.393h13.575c.096 0 .175.078.175.174v1.219H1.396V1.567c0-.096.078-.174.174-.174zm13.575 10.214H1.57a.175.175 0 0 1-.174-.174V6.5h13.923v4.933a.175.175 0 0 1-.175.174zM5.571 8.705v1.161a.35.35 0 0 1-.348.348h-2.09a.35.35 0 0 1-.347-.348v-1.16a.35.35 0 0 1 .348-.349h2.09a.35.35 0 0 1 .347.348zm5.572 0v1.161a.35.35 0 0 1-.348.348H6.848a.35.35 0 0 1-.348-.348v-1.16a.35.35 0 0 1 .348-.349h3.947a.35.35 0 0 1 .348.348z"/></svg>');
+              background-position: left center;
+              display: inline-block;
+              width: 17px;
+              height: 13px;
+              position: absolute;
+              left: 0;
+              top: 7px;
+            }
+          }
+        }
+        .external-payment {
+          .payment-type-label {
+            position: relative;
+            display: block;
+            height: 65px;
+
+            img {
+              display: none;
+            }
+            &::before {
+              content: "";
+              background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 526.775 140.375"><path d="M63.213.01H22.24c-2.804 0-5.188 2.036-5.626 4.805L.044 109.88c-.33 2.072 1.275 3.942 3.378 3.942h19.56c2.805 0 5.19-2.037 5.626-4.81l4.47-28.338c.43-2.775 2.82-4.812 5.62-4.812h12.97c26.99 0 42.566-13.06 46.635-38.942 1.833-11.323.077-20.22-5.225-26.45C87.255 3.627 76.926.01 63.213.01zM67.94 38.38C65.7 53.085 54.466 53.085 43.604 53.085H37.42l4.34-27.457c.257-1.66 1.694-2.882 3.372-2.882h2.833c7.4 0 14.38 0 17.986 4.217 2.152 2.517 2.81 6.255 1.99 11.42M185.688 37.91h-19.62c-1.672 0-3.116 1.22-3.374 2.88l-.868 5.49-1.372-1.99c-4.248-6.165-13.72-8.226-23.174-8.226-21.68 0-40.2 16.42-43.806 39.457-1.875 11.492.79 22.48 7.31 30.142 5.978 7.045 14.533 9.98 24.712 9.98 17.47 0 27.158-11.232 27.158-11.232l-.875 5.452c-.33 2.085 1.275 3.954 3.366 3.954h17.673c2.81 0 5.18-2.037 5.625-4.81L189.05 41.85c.335-2.066-1.265-3.94-3.363-3.94zm-27.35 38.186c-1.892 11.21-10.79 18.735-22.135 18.735-5.698 0-10.252-1.827-13.176-5.29-2.9-3.44-4.002-8.334-3.08-13.786 1.768-11.113 10.816-18.883 21.988-18.883 5.572 0 10.1 1.852 13.085 5.344 2.99 3.53 4.175 8.454 3.32 13.882M290.184 37.91h-19.717c-1.88 0-3.648.934-4.715 2.498L238.56 80.464 227.03 41.97c-.725-2.408-2.947-4.06-5.463-4.06h-19.376c-2.355 0-3.99 2.3-3.24 4.516l21.716 63.733-20.417 28.822c-1.607 2.27.01 5.393 2.786 5.393h19.69c1.87 0 3.62-.91 4.68-2.445l65.578-94.66c1.57-2.264-.042-5.36-2.804-5.36" fill="white"/><path d="M355.462.01h-40.978c-2.798 0-5.183 2.036-5.62 4.805l-16.57 105.065c-.33 2.072 1.275 3.942 3.366 3.942h21.03c1.95 0 3.624-1.426 3.93-3.367l4.7-29.78c.433-2.776 2.824-4.813 5.62-4.813h12.966c26.995 0 42.566-13.06 46.64-38.942 1.84-11.323.073-20.22-5.23-26.45C379.5 3.627 369.176.01 355.462.01zm4.728 38.372c-2.235 14.703-13.467 14.703-24.336 14.703h-6.176l4.343-27.458c.26-1.66 1.684-2.88 3.368-2.88h2.833c7.395 0 14.38 0 17.986 4.216 2.15 2.516 2.804 6.255 1.984 11.42M477.933 37.91h-19.61c-1.683 0-3.115 1.22-3.367 2.88l-.87 5.49-1.376-1.99c-4.247-6.165-13.714-8.226-23.167-8.226-21.683 0-40.194 16.42-43.802 39.457-1.867 11.492.786 22.48 7.305 30.142 5.99 7.045 14.534 9.98 24.712 9.98 17.47 0 27.158-11.232 27.158-11.232l-.875 5.452c-.33 2.085 1.276 3.954 3.38 3.954h17.667c2.798 0 5.183-2.037 5.62-4.81l10.61-67.155c.323-2.066-1.282-3.94-3.385-3.94zm-27.35 38.186c-1.882 11.21-10.79 18.735-22.137 18.735-5.686 0-10.25-1.827-13.175-5.29-2.898-3.44-3.99-8.334-3.078-13.786 1.78-11.113 10.814-18.883 21.988-18.883 5.57 0 10.1 1.852 13.084 5.344 3 3.53 4.187 8.454 3.318 13.882M501.064 2.89l-16.818 106.99c-.33 2.072 1.276 3.942 3.368 3.942h16.906c2.81 0 5.195-2.037 5.626-4.81L526.73 3.95c.33-2.073-1.276-3.948-3.368-3.948H504.43c-1.67.005-3.11 1.228-3.366 2.887" fill="white"/></svg>');
+              background-position: left center;
+              background-size: contain;
+              background-repeat: no-repeat;
+              display: inline-block;
+              width: 68px;
+              height: 20px;
+              position: absolute;
+              left: 50%;
+              top: 52%;
+              transform: translate(-50%, -50%);
+            }
+          }
+        }
+      }
+    }
+    #responsive_payment_typecc_exp_date_row {
+      @include from(3) {
+        display: inline-block;
+        width: 66%;
+      }
+      .date-input-container {
+        .cardExpGroup {
+          height: auto;
+        }
+        select {
+          position: initial;
+          display: block;
+          height: 62px;
+          width: 100%;
+          margin-bottom: 15px;
+        }
+        @include from(3) {
+          select {
+            display: inline-block;
+            width: 45%;
+            &:last-child {
+              margin-left: 20px;
+            }
+          }
+        }
+      }
+    }
+    #responsive_payment_typecc_cvv_row {
+      .HelpLink {
+        display: none;
+      }
+      .FormLabelText {
+        display: block;
+      }
+      @include from(3) {
+        display: inline-block;
+        width: 31%;
+        float: right;
+      }
+    }
+    .button-container {
+      margin-top: 45px;
+      margin-bottom: 25px;
+      height: 62px;
+      button {
+        font-family: "myriad-pro", sans-serif;
+        display: block;
+        background-color: #b50938;
+        width: 100%;
+        height: 62px;
+        font-size: 20px;
+        font-weight: bold;
+        line-height: 1.2;
+        text-align: center;
+        color: #ffffff;
+        border: 0;
+        position: relative;
+        cursor: pointer;
+        transition: background-color 0.3s;
+        &::after {
+          content: "";
+          position: absolute;
+          right: 0;
+          top: 0;
+          width: 62px;
+          height: 62px;
+          background-color: #ed1849;
+          background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="14" height="13" viewBox="0 0 14 13"><path fill="white" fill-rule="evenodd" d="M5.746.837l.656-.656a.707.707 0 0 1 1.003 0l5.75 5.747a.707.707 0 0 1 0 1.002l-5.75 5.75a.707.707 0 0 1-1.003 0l-.656-.656a.71.71 0 0 1 .012-1.015l3.564-3.395H.82a.708.708 0 0 1-.71-.71v-.947c0-.393.317-.71.71-.71h8.5L5.759 1.852A.706.706 0 0 1 5.746.837z"/></svg>');
+          background-position: center;
+          background-size: 13px 13px;
+          background-repeat: no-repeat;
+          transition: background-color 0.3s;
+        }
+        &:hover {
+          background-color: #333;
+          &::after {
+            background-color: #666;
+          }
+        }
+        span {
+          display: none;
+        }
+      }
+    }
+    #finca-seals-wrapper {
+      display: flex;
+      align-items: center;
+      margin-bottom: 45px;
+      filter: grayscale(100%);
+      a {
+        display: block;
+        margin-right: 20px;
+        &:last-child {
+          margin-right: 0;
+        }
+      }
+    }
+    #finca-footer-copy {
+      font-size: 14px;
+      line-height: 1.29;
+      color: #333333;
+      p {
+        margin-bottom: 10px;
+      }
+    }
+  }
+}
