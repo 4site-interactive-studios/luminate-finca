@@ -10,7 +10,7 @@ export const run = () => {
   disableStyle("UserGlobalStyle.css");
   // We need to COMMENT the line below before publishing
   // disableStyle("main.css");
-  document.getElementById("level_flexibleexpanded6953amount").placeholder =
+  document.querySelector(".donation-level-user-entered input").placeholder =
     "$ Enter an amount";
 
   document
