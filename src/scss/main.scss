@@ -68,12 +68,14 @@ body {
     }
     &:last-child {
       flex: auto;
+      position: fixed;
+      top: 0;
+      left: 600px;
       background-image: url("https://apps.4sitestudios.com/fernando/finca/background.jpg");
       background-repeat: no-repeat;
       background-size: cover;
-      background-position: center top;
-      background-attachment: fixed;
-      position: relative;
+      height: 100vh;
+      width: calc(100vw - 600px);
       &::before {
         content: "";
         width: 13px;
