@@ -24,7 +24,7 @@ export const run = () => {
     .getElementsByTagName("option")[0].text = "Honor Gift Type";
   document
     .getElementById("tribute_notify_recip_state")
-    .getElementsByTagName("option")[0].text = "Receipt's State";
+    .getElementsByTagName("option")[0].text = "Recipient's State";
   document.getElementById(
     "give-in-honor-form-section-heading-wrapper"
   ).style.display = "none";
