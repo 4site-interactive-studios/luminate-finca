@@ -619,7 +619,7 @@ body {
       button {
         font-family: "myriad-pro", sans-serif;
         display: block;
-        background-color: #b50938;
+        background-color: #333333;
         width: 100%;
         height: 62px;
         font-size: 20px;
@@ -638,7 +638,7 @@ body {
           top: 0;
           width: 62px;
           height: 62px;
-          background-color: #ed1849;
+          background-color: #000000;
           background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="14" height="13" viewBox="0 0 14 13"><path fill="white" fill-rule="evenodd" d="M5.746.837l.656-.656a.707.707 0 0 1 1.003 0l5.75 5.747a.707.707 0 0 1 0 1.002l-5.75 5.75a.707.707 0 0 1-1.003 0l-.656-.656a.71.71 0 0 1 .012-1.015l3.564-3.395H.82a.708.708 0 0 1-.71-.71v-.947c0-.393.317-.71.71-.71h8.5L5.759 1.852A.706.706 0 0 1 5.746.837z"/></svg>');
           background-position: center;
           background-size: 13px 13px;
@@ -646,9 +646,9 @@ body {
           transition: background-color 0.3s;
         }
         &:hover {
-          background-color: #333;
+          background-color: #b50938;
           &::after {
-            background-color: #666;
+            background-color: #ed1849;
           }
         }
         span {
