@@ -1,4 +1,9 @@
-import { disableStyle, freqLabels, amountSelect } from "./utils/custom-methods";
+import {
+  disableStyle,
+  freqLabels,
+  writeBtn,
+  amountSelect
+} from "./utils/custom-methods";
 import { parseInputs } from "./utils/parse-inputs";
 export const run = () => {
   const input = document.querySelectorAll("input[type='text'],textarea");
@@ -61,6 +66,13 @@ export const run = () => {
   amountSelect(
     document.querySelector('input[name="level_flexibleexpanded"]:checked')
   );
+  // Other Input Field
+  document
+    .querySelector(".donation-level-user-entered input")
+    .addEventListener("input", evt => {
+      writeBtn(evt.target.value);
+    });
+
   honor.addEventListener("change", () => {
     if (honor.checked) {
       document.getElementById(

@@ -1,5 +1,10 @@
 import { run } from "./app/app";
 import "./scss/main.scss";
-document.addEventListener("DOMContentLoaded", function() {
+
+if (document.readyState !== "loading") {
   run();
-});
+} else {
+  document.addEventListener("DOMContentLoaded", function() {
+    run();
+  });
+}

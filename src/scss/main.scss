@@ -5,6 +5,7 @@
 $slicer-breakpoints: 0 400px 900px 1200px 1440px;
 body {
   font-family: "myriad-pro", sans-serif;
+  font-display: swap;
 }
 
 // Hide what we don't want people to see
@@ -160,10 +161,15 @@ body {
         padding-left: 30px;
         line-height: 16px;
         margin-top: 7px;
+        background-size: 25px;
+        background-position: center left;
         &.usa {
           background-image: url("https://apps.4sitestudios.com/fernando/finca/usa.svg");
           background-repeat: no-repeat;
-          background-size: contain;
+        }
+        &.can {
+          background-image: url("https://apps.4sitestudios.com/fernando/finca/can.svg");
+          background-repeat: no-repeat;
         }
       }
       &.padlock {
@@ -228,6 +234,7 @@ body {
                 outline: none;
                 height: 62px;
                 font-family: myriad-pro, sans-serif;
+                font-display: swap;
 
                 box-sizing: border-box;
                 border: solid 1px rgba(171, 182, 171, 0.2);
@@ -416,6 +423,7 @@ body {
         }
         input {
           border-color: #ed1849;
+          background-color: #ffe9ed;
         }
       }
     }
@@ -428,6 +436,7 @@ body {
       }
       select {
         font-family: myriad-pro, sans-serif;
+        font-display: swap;
         outline: none;
         appearance: none;
         background-image: url("data:image/svg+xml;utf8,<svg fill='black' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");
@@ -529,6 +538,10 @@ body {
           text-decoration: none;
         }
         .internal-payment {
+          display: block;
+          @include to(2) {
+            max-width: 100%;
+          }
           .payment-type-label {
             padding-left: 25px;
             position: relative;
@@ -546,6 +559,10 @@ body {
           }
         }
         .external-payment {
+          display: block;
+          @include to(2) {
+            max-width: 100%;
+          }
           .payment-type-label {
             position: relative;
             display: block;
@@ -618,6 +635,7 @@ body {
       height: 62px;
       button {
         font-family: "myriad-pro", sans-serif;
+        font-display: swap;
         display: block;
         background-color: #333333;
         width: 100%;
@@ -638,7 +656,7 @@ body {
           top: 0;
           width: 62px;
           height: 62px;
-          background-color: #000000;
+          background-color: #666;
           background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="14" height="13" viewBox="0 0 14 13"><path fill="white" fill-rule="evenodd" d="M5.746.837l.656-.656a.707.707 0 0 1 1.003 0l5.75 5.747a.707.707 0 0 1 0 1.002l-5.75 5.75a.707.707 0 0 1-1.003 0l-.656-.656a.71.71 0 0 1 .012-1.015l3.564-3.395H.82a.708.708 0 0 1-.71-.71v-.947c0-.393.317-.71.71-.71h8.5L5.759 1.852A.706.706 0 0 1 5.746.837z"/></svg>');
           background-position: center;
           background-size: 13px 13px;
