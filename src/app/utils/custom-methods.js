@@ -19,6 +19,9 @@ export const freqLabels = freq => {
     ".donation-levels div.donation-level-container"
   );
   const month_label = document.querySelectorAll(".month-label");
+  const honor = document.querySelector(
+    'label[for="tribute_show_honor_fieldsname"]'
+  );
   for (let i = 0; i < radios.length - 1; i++) {
     let box = radios[i].getElementsByClassName(
       "donation-level-label-container"
@@ -26,10 +29,16 @@ export const freqLabels = freq => {
     if (freq == "month") {
       box.innerHTML = box.textContent + " <span>/mo</span>";
       month_label.forEach(elem => (elem.style.display = "inline"));
+      if (honor) {
+        honor.style.display = "none";
+      }
     } else {
       let span = box.getElementsByTagName("span")[0];
       if (span) span.remove();
       month_label.forEach(elem => (elem.style.display = "none"));
+      if (honor) {
+        honor.style.display = "block";
+      }
     }
   }
   amountSelect(
