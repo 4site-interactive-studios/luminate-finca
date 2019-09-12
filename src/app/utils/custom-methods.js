@@ -30,6 +30,9 @@ export const freqLabels = freq => {
       box.innerHTML = box.textContent + " <span>/mo</span>";
       month_label.forEach(elem => (elem.style.display = "inline"));
       if (honor) {
+        if (document.getElementById("tribute_show_honor_fieldsname").checked) {
+          honor.click();
+        }
         honor.style.display = "none";
       }
     } else {
