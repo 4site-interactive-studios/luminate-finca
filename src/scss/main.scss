@@ -180,6 +180,52 @@ body {
         padding-left: 17px;
         margin-top: 7px;
       }
+      &.padlock,
+      &.flag {
+        margin-left: 1rem;
+      }
+    }
+    #flag-select {
+      font-family: myriad-pro, sans-serif;
+      font-display: swap;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      appearance: none;
+      background-image: url("data:image/svg+xml;utf8,<svg fill='black' height='24' viewBox='0 0 24 24' width='24' xmlns='http://www.w3.org/2000/svg'><path d='M7 10l5 5 5-5z'/><path d='M0 0h24v24H0z' fill='none'/></svg>");
+      background-repeat: no-repeat;
+      background-position-x: 30px;
+      background-position-y: 50%;
+      width: 100%;
+      box-sizing: border-box;
+      border: none;
+      background-color: initial;
+      outline: none;
+      padding-left: 0.25rem;
+      padding-right: 20px;
+      font-size: 12px;
+      font-weight: 600;
+      line-height: 1.67;
+      color: #333;
+      letter-spacing: normal;
+      border-radius: 0;
+      box-shadow: none;
+      cursor: pointer;
+      &::-ms-expand {
+        display: none;
+      }
+      &:hover {
+        border-color: #888;
+      }
+      &:focus {
+        border-color: #aaa;
+        box-shadow: 0 0 1px 3px rgba(59, 153, 252, 0.7);
+        box-shadow: 0 0 0 3px -moz-mac-focusring;
+        color: #222;
+        outline: none;
+      }
+      option {
+        font-weight: normal;
+      }
     }
   }
 
