@@ -35,6 +35,7 @@ export const freqLabels = freq => {
         }
         honor.style.display = "none";
       }
+      document.getElementById("level_flexibleduration").value = "M:0";
     } else {
       let span = box.getElementsByTagName("span")[0];
       if (span) span.remove();
@@ -42,6 +43,7 @@ export const freqLabels = freq => {
       if (honor) {
         honor.style.display = "block";
       }
+      document.getElementById("level_flexibleduration").value = "";
     }
   }
   amountSelect(
