@@ -8,6 +8,7 @@ import { parseInputs } from "./utils/parse-inputs";
 export const run = () => {
   const input = document.querySelectorAll("input[type='text'],textarea");
   const honor = document.getElementById("tribute_show_honor_fieldsname");
+  const form = document.getElementById("ProcessForm");
   parseInputs(input);
   disableStyle("DonFormResponsive.css");
   disableStyle("ResponsiveBase.css");
@@ -85,4 +86,14 @@ export const run = () => {
     }
   });
   document.getElementById("finca-page-wrapper").classList.add("loaded");
+  // OnSubmit Event
+  form.addEventListener("submit", evt => {
+    const frequency = document.querySelector('input[name="freq"]:checked').id;
+    if (frequency == "month") {
+      // Clear out all the values from the Honor fields
+      document
+        .querySelectorAll("[name^='tribute_']")
+        .forEach(elem => (elem.value = ""));
+    }
+  });
 };
