@@ -19,18 +19,28 @@ export const run = () => {
   document.querySelector(".donation-level-user-entered input").placeholder =
     "$ Enter an amount";
 
-  document
-    .getElementById("billing_addr_state")
-    .getElementsByTagName("option")[0].text = "State";
+  if (document.getElementById("billing_addr_country").value == "Canada") {
+    document
+      .getElementById("billing_addr_state")
+      .getElementsByTagName("option")[0].text = "Province";
+    document
+      .getElementById("tribute_notify_recip_state")
+      .getElementsByTagName("option")[0].text = "Recipient's Province";
+  } else {
+    document
+      .getElementById("billing_addr_state")
+      .getElementsByTagName("option")[0].text = "State";
+    document
+      .getElementById("tribute_notify_recip_state")
+      .getElementsByTagName("option")[0].text = "Recipient's State";
+  }
+
   document
     .getElementById("billing_addr_country")
     .getElementsByTagName("option")[0].text = "Country";
   document
     .getElementById("tribute_type")
     .getElementsByTagName("option")[0].text = "Honor Gift Type";
-  document
-    .getElementById("tribute_notify_recip_state")
-    .getElementsByTagName("option")[0].text = "Recipient's State";
   document.getElementById(
     "give-in-honor-form-section-heading-wrapper"
   ).style.display = "none";
