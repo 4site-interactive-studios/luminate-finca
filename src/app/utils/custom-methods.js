@@ -94,3 +94,5 @@ export const writeBtn = value => {
     button.innerHTML = "Give $" + parseFloat(value) + " Monthly";
   }
 };
+
+export const isIE11 = !!window.MSInputMethodContext && !!document.documentMode;

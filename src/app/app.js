@@ -2,10 +2,16 @@ import {
   disableStyle,
   freqLabels,
   writeBtn,
-  amountSelect
+  amountSelect,
+  isIE11
 } from "./utils/custom-methods";
 import { parseInputs } from "./utils/parse-inputs";
 export const run = () => {
+  if (window.ie11 !== undefined && isIE11) {
+    window.location.replace(window.ie11);
+    return;
+  }
+
   const input = document.querySelectorAll("input[type='text'],textarea");
   const honor = document.getElementById("tribute_show_honor_fieldsname");
   const form = document.getElementById("ProcessForm");
